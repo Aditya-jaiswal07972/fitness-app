@@ -1,0 +1,154 @@
+/* Target table cells specifically */
+
+  /* Ensure the header is also white */
+  .nutrition-table thead tr th {
+    color: white !important;
+  }
+
+  .nutrition-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #f8f9fa; /* Light background for readability */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .nutrition-table th,
+  .nutrition-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    color: #343a40;
+  }
+  
+  .nutrition-table th {
+    background-color: #007bff; /* Blue header */
+    color: #fff; /* White text for headers */
+  }
+  
+  .nutrition-table tbody tr:hover {
+    background-color: #f1f3f5; /* Slightly darker background on hover */
+    cursor: pointer;
+  }
+  
+  .nutrition-table tbody tr:nth-child(odd) {
+    background-color: #e9ecef; /* Alternate row colors */
+  }
+  
+  .nutrition-table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .nutrition-table thead {
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .nutrition-table tbody td {
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .nutrition-table:hover {
+    transform: scale(1.01); /* Slight scale-up on hover for a modern effect */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nutrition-table th,
+    .nutrition-table td {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
+
+  .custom-search-box {
+    font-size: 16px; /* Replace $font-size */
+    border: solid 2px #ccc; /* Replace $frame-thickness and $frame-color */
+    display: inline-block;
+    position: relative;
+    border-radius: 50px; /* Replace $size */
+    border-color: #ff0022;
+    box-shadow: #fff 0 0 5px; /* Replace $frame-color */
+
+  }
+
+  .custom-search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .custom-search-box input[type="text"] {
+    font-family: inherit;
+    font-weight: bold;
+    width: 90px; /* Replace $size */
+    height: 50px; /* Replace $size */
+    padding: 10px; /* Replace $open-padding */
+    border: none;
+    box-sizing: border-box;
+    border-radius: 50px; /* Replace $size */
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s; /* Replace $open-trans-time and $close-trans-time */
+  }
+  
+  .custom-search-box input[type="text"]:focus {
+    outline: none;
+  }
+  
+  .custom-search-box input[type="text"]:focus,
+  .custom-search-box input[type="text"]:not(:placeholder-shown) {
+    width: 200px; /* Replace $open-width */
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+  
+  .custom-search-box input[type="text"]:focus + button[type="reset"],
+  .custom-search-box input[type="text"]:not(:placeholder-shown) + button[type="reset"] {
+    transform: rotate(-45deg) translateY(0);
+    transition: transform 0.3s ease-out 0.5s;
+  }
+  
+  .custom-search-box input[type="text"]:focus + button[type="reset"]:after,
+  .custom-search-box input[type="text"]:not(:placeholder-shown) + button[type="reset"]:after {
+    opacity: 1;
+    transition: top 0.3s ease-out 0.8s, right 0.3s ease-out 0.8s, opacity 0.3s ease 0.8s;
+  }
+  
+  .custom-search-box button[type="reset"] {
+    background-color: transparent;
+    width: 10px; /* Replace $handle-height */
+    height: 10px; /* Replace $handle-height */
+    border: 0;
+    padding: 0;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25px; /* Adjust based on height */
+    right: 25px; /* Adjust based on width */
+    transform: rotate(-45deg) translateY(50px); /* Replace $size and $frame-thickness */
+    transition: transform 0.3s ease-out 0.3s; /* Replace $close-trans-time */
+  }
+  
+  .custom-search-box button[type="reset"]:before,
+  .custom-search-box button[type="reset"]:after {
+    content: "";
+    background-color: #ff0022; /* Replace $frame-color */
+    width: 2px; /* Replace $frame-thickness */
+    height: 20px; /* Replace $handle-height */
+    position: absolute;
+  }
+  
+  .custom-search-box button[type="reset"]:after {
+    transform: rotate(90deg);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  
+  .custom-search-btn {
+    margin-top: 15px;
+    display: inline-block;
+  }
+  

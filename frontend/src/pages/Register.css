@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+.formcontrol {
+	border: none;
+    background: none;
+    border-bottom: 2px solid #D1D1D4;
+    transition: .2s;
+    color: antiquewhite;
+}
+.formcontrol:focus {
+    border-bottom: 2px solid #d4c570;
+    transition: .2s;
+    background-color: rgb(7, 4, 23);
+    color: #D1D1D4;
+}
+#otp
+{
+    border-radius: 16px;
+    width: 26vh;
+    height: 4vh;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 0 4px 0 rgba(252, 252, 251, 0.924);
+    margin-bottom: 14px;
+    background-color: rgba(42, 40, 53, 0.829);
+    color: aliceblue;
+    font-size: 18px;
+    
+}
