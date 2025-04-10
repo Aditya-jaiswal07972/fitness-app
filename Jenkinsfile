@@ -39,10 +39,8 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'KEY_FILE')]) {
                     bat '''
-                        whoami > whoami.txt
-                        set /p JENKINS_USER=<whoami.txt
                         icacls %KEY_FILE% /inheritance:r
-                        icacls %KEY_FILE% /grant:r "%JENKINS_USER%:R"
+                        icacls %KEY_FILE% /grant:r "krishn\\hp:R"
                         ssh -i %KEY_FILE% -o IdentitiesOnly=yes -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
                         "cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
                     '''
