@@ -40,7 +40,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'KEY_FILE')]) {
                     bat '''
-                        ssh -i %KEY_FILE% -o StrictHostKeyChecking=no StrictModes=no ubuntu@18.234.61.171 ^
+                        ssh -i %KEY_FILE% -o StrictHostKeyChecking=no -o StrictModes=no ubuntu@18.234.61.171 ^
                         "cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
                     '''
                 }
