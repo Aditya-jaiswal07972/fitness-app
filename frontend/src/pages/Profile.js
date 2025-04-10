@@ -1,0 +1,62 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Row, Col } from "react-bootstrap";
+import { Route, Routes } from "react-router-dom";
+import { setCredentials } from "../slices/authSlice";
+import ProfileSidebar from "../components/ProfileSidebar";
+import UpdateProfile from "../components/UpdateProfile";
+import UpdateDietProfile from "../components/UpdateDietProfile";
+import MealPlan from "../components/MealPlan";
+import WaterIntake from "../components/WaterIntake";
+import Footer from "../components/Footer";
+import BgImage from "../assets/images/bgimage.jpg";
+
+
+
+const Profile = () => {
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(setCredentials(userInfo));
+  }, [userInfo, dispatch]);
+
+  return (
+<>
+     <Row style={{
+       backgroundImage: `url(${BgImage})`,
+       backgroundSize: "cover",
+       backgroundPosition: "center",
+       
+       padding: "0",
+       margin: "0",
+       maxWidth: "100%",
+       maxHeight: "100%",
+       paddingBottom: "350px",
+       paddingTop: "20px",
+     }}>
+      <Col md={2}>
+        <ProfileSidebar userInfo={userInfo} dispatch={dispatch} />
+      </Col>
+      <Col md={9}>
+        <Routes>
+          <Route
+            path="/"
+            element={<UpdateProfile userInfo={userInfo} dispatch={dispatch} />}
+          />
+          <Route
+            path="update"
+            element={<UpdateProfile userInfo={userInfo} dispatch={dispatch} />}
+          />
+          <Route path="diet" element={<UpdateDietProfile />} />
+          <Route path="meal-plan" element={<MealPlan />} />
+          <Route path="water-intake" element={<WaterIntake />} />
+        </Routes>
+      </Col>
+    </Row>
+    <Footer />
+</>
+  );
+};
+
+export default Profile;

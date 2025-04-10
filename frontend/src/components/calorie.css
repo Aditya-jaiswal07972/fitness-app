@@ -1,0 +1,132 @@
+/* Styling the calorie calculator container */
+.calorie-calculator {
+    text-align: center;
+    color: #e6d5d5; /* Color for the container text */
+    opacity: 0.9; /* Adds some transparency */
+    font-family: 'Arial', sans-serif; /* Clean font for readability */
+}
+
+/* Styling for the form */
+.styled-form {
+    text-align: center;
+    color: #e6d5d5; /* Color for the container text */
+    opacity: 0.9; /* Adds some transparency */
+    font-weight: bolder;
+    margin-bottom: 20px; /* Adds space below the form */
+}
+
+/* Styling the input fields in the form */
+.styled-form input:hover {
+    background-color: #69829e;
+}
+
+/* Styling form labels */
+.styled-form label {
+    color: #f6e6e0; /* Set a color for form labels */
+    font-weight: bolder;
+    font-size: 20px;
+    opacity: 0.8; /* Adds transparency */
+}
+
+/* Styling form inputs */
+.styled-form input {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for the button */
+.styled-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btnCal {
+    background-color: #0056b3;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+/* Button hover effect */
+.styled-form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    font-weight: bolder;
+}
+
+/* Styling the table */
+.style-form table {
+    width: 100%; /* Ensure table spans the full width */
+    color: white; /* Set text color to white */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background with some transparency */
+    border: 1px solid white; /* White border for the table */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px;
+    overflow-x: auto; /* Ensures the table is scrollable on smaller screens */
+    box-shadow: 0 10px 20px rgb(103, 255, 209); /* Subtle shadow for depth */
+}
+
+/* Styling table headers */
+.style-form table th {
+    color: white;
+    background-color: #007bff; /* Blue header background */
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #fff; /* Add border under headers */
+}
+
+/* Styling table cells */
+.style-form table td {
+    color: white;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ccc; /* Soft cell borders */
+}
+
+/* Add hover effect for rows */
+.style-form table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight highlight on hover */
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .styled-form table {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .styled-form table th, .styled-form table td {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .styled-form button {
+        padding: 8px 16px; /* Smaller button on small screens */
+        font-size: 14px; /* Adjust button font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .calorie-calculator {
+        padding: 20px; /* Add some padding for small screens */
+    }
+
+    .styled-form table {
+        font-size: 12px; /* Even smaller font size for mobile */
+    }
+
+    .styled-form input, .styled-form button {
+        font-size: 14px; /* Adjust font size for mobile */
+        padding: 8px 15px; /* Adjust padding */
+    }
+
+    .styled-form table th, .styled-form table td {
+        padding: 8px; /* Adjust padding for mobile */
+    }
+}

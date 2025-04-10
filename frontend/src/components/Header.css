@@ -1,0 +1,22 @@
+  
+  .navbar .nav-link {
+    color: #fff !important; /* White font */
+    margin: 0 10px;
+  }
+  
+  .navbar .nav-link.active {
+    border-bottom: 2px solid #fff; /* Active link underline */
+  }
+  
+  .navbar-brand img {
+    max-height: 50px; /* Adjust logo size for responsiveness */
+  }
+  
+  .navbar-toggler {
+    border-color: transparent; /* Remove border for toggle */
+  }
+  
+  .navbar-toggler-icon {
+    color: #fff; /* White menu icon */
+  }
+  

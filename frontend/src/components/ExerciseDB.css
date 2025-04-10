@@ -1,0 +1,218 @@
+
+.exercise-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .exercise-card {
+    height:200px;
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+  }
+  
+  .exercise-name {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .gif-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .exercise-gif {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #ddd;
+  }
+  
+  .pagination button.active {
+    background-color: #bbb;
+  }
+  
+  /* Clearing floats */
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+
+
+/* Mini reset, no margins, paddings or bullets */
+.menu,
+.submenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Main level */
+.menu {
+  margin: 50px auto;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu > li {
+  background: #34495e;
+  position: relative;
+  transform: skewX(25deg);
+}
+
+/* Styling for dropdown and button */
+.dropdown {
+  padding: 10px;
+  width: 250px;
+  height: 50px;
+  background: none;
+  border: 4px solid #ffd52d;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #ffd52d;
+  outline: none;
+  transition: 0.5s;
+}
+
+.dropdown:hover {
+  background: #3b3640;
+  border-radius: 10px;
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background-color: #ffd52d;
+  border: none;
+  border-radius: 10px;
+  color: #181010;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #f7b732;
+}
+
+/* Dropdown options */
+.menu a {
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.menu li:hover {
+  background: #e74c3c;
+}
+
+.menu > li > a {
+  transform: skewX(-25deg);
+  padding: 1em 2em;
+}
+
+/* Show dropdown */
+.submenu,
+.submenu li {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu > li:hover .submenu,
+.menu > li:hover .submenu li {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu > li:hover .submenu li:nth-child(even) {
+  transform: skewX(25deg) translateX(15px);
+}
+
+.menu > li:hover .submenu li:nth-child(odd) {
+  transform: skewX(-25deg) translateX(-15px);
+}
+
+/* Pagination styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #ffd52d;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #f7b732;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdown, .search-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .pagination {
+    flex-direction: column;
+  }
+
+  .pagination button {
+    margin: 5px 0;
+  }
+}
