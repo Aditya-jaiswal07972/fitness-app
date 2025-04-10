@@ -38,9 +38,9 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sshagent(credentials: ['ansible-key']) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'KEY_FILE')]) {
                     bat '''
-                        ssh -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
+                        ssh -i %KEY_FILE% -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
                         "cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
                     '''
                 }
