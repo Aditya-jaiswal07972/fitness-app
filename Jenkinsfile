@@ -7,7 +7,6 @@ pipeline {
     }
 
     stages {
-        
 
         stage('Build Backend Docker Image') {
             steps {
@@ -39,7 +38,12 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat 'ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml'
+                sshagent(credentials: ['ansible-key']) {
+                    bat '''
+                        ssh -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
+                        "cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
+                    '''
+                }
             }
         }
     }
