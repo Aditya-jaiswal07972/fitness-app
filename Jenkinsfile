@@ -11,20 +11,20 @@ pipeline {
 
         stage('Build Backend Docker Image') {
             steps {
-                bat 'docker build -t $DOCKER_HUB_USERNAME/fitness-app-backend:latest -f Dockerfile.backend .'
+                bat 'docker build -t aditya14rudra/fitness-app-backend:latest -f Dockerfile.backend .'
             }
         }
 
         stage('Build Frontend Docker Image') {
             steps {
-                bat 'docker build -t $DOCKER_HUB_USERNAME/fitness-app-frontend:latest -f Dockerfile.frontend .'
+                bat 'docker build -t aditya14rudra/fitness-app-frontend:latest -f Dockerfile.frontend .'
             }
         }
 
         stage('Push Backend Docker Image') {
             steps {
                 withDockerRegistry([credentialsId: 'dockerhub-credentials', url: '']) {
-                    bat 'docker push $DOCKER_HUB_USERNAME/fitness-app-backend:latest'
+                    bat 'docker push aditya14rudra/fitness-app-backend:latest'
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
         stage('Push Frontend Docker Image') {
             steps {
                 withDockerRegistry([credentialsId: 'dockerhub-credentials', url: '']) {
-                    bat 'docker push $DOCKER_HUB_USERNAME/fitness-app-frontend:latest'
+                    bat 'docker push aditya14rudra/fitness-app-frontend:latest'
                 }
             }
         }
