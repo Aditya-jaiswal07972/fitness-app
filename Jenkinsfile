@@ -37,14 +37,17 @@ pipeline {
         }
 
         stage('Deploy to Kubernetes') {
-            steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'KEY_FILE')]) {
-                    bat '''
-                        ssh -i %KEY_FILE% -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o "StrictModes=no" ubuntu@18.234.61.171 ^
-                        "cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
-                    '''
-                }
-            }
+	    steps {
+        	withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'KEY_FILE')]) {
+            		bat '''
+                		icacls %KEY_FILE% /inheritance:r
+                		icacls %KEY_FILE% /grant:r "%USERNAME%:R"
+                		ssh -i %KEY_FILE% -o IdentitiesOnly=yes -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
+                		"cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
+            		'''
         }
+    }
+}
+
     }
 }
