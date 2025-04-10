@@ -7,7 +7,6 @@ pipeline {
     }
 
     stages {
-
         stage('Build Backend Docker Image') {
             steps {
                 bat 'docker build -t aditya14rudra/fitness-app-backend:latest -f Dockerfile.backend .'
@@ -37,17 +36,18 @@ pipeline {
         }
 
         stage('Deploy to Kubernetes') {
-	    steps {
-        	withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'KEY_FILE')]) {
-            		bat '''
-                		icacls %KEY_FILE% /inheritance:r
-                		icacls %KEY_FILE% /grant:r "%USERNAME%:R"
-                		ssh -i %KEY_FILE% -o IdentitiesOnly=yes -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
-                		"cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
-            		'''
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'ansible-key', keyFileVariable: 'KEY_FILE')]) {
+                    bat '''
+                        whoami > whoami.txt
+                        set /p JENKINS_USER=<whoami.txt
+                        icacls %KEY_FILE% /inheritance:r
+                        icacls %KEY_FILE% /grant:r "%JENKINS_USER%:R"
+                        ssh -i %KEY_FILE% -o IdentitiesOnly=yes -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
+                        "cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
+                    '''
+                }
+            }
         }
-    }
-}
-
     }
 }
