@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Aditya-jaiswal07972/fitness-app.git'
+                git branch: 'main', url: 'https://github.com/Aditya-jaiswal07972/fitness-app.git'
             }
         }
 
