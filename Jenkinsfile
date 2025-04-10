@@ -7,11 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Aditya-jaiswal07972/fitness-app.git'
-            }
-        }
+        
 
         stage('Build Backend Docker Image') {
             steps {
