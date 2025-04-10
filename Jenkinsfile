@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['ansible-key']) {
                     bat '''
-                        ssh -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
+                        ssh -i C:/Users/HP/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@18.234.61.171 ^
                         "cd /home/ubuntu/fitness-app && git pull && ansible-playbook -i /etc/ansible/hosts ansible/deploy.yaml"
                     '''
                 }
