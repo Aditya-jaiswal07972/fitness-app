@@ -1,4 +1,6 @@
 .vercel
 node_modules
 .env
+.env.example
+.env.save
 .DS_Store
