@@ -5,9 +5,9 @@
       command: docker login -u aditya14rudra -p Aaj+14docker
 
     - name: Build React frontend image
-      command: docker build -t aditya14rudra/fitness-frontend:latest ./fron>
+      command: docker build -t aditya14rudra/fitness-frontend:latest ./frontend
     - name: Build Node.js backend image
-      command: docker build -t aditya14rudra/fitness-backend:latest ./backe>
+      command: docker build -t aditya14rudra/fitness-backend:latest ./backend
     - name: Push frontend image
       command: docker push aditya14rudra/fitness-frontend:latest
 
