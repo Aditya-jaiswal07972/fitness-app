@@ -2,23 +2,24 @@ pipeline {
     agent any
 
     environment {
-        ANSIBLE_HOST = "ubuntu@54.196.240.72"
-        ANSIBLE_KEY = "ubuntu" // Credential ID in Jenkins
-        DOCKER_HUB_CREDENTIALS = "docker-hub-credentials" // <-- Your Docker Hub creds ID
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
     }
 
     stages {
-        stage('Checkout') {
+        stage('Clone Repo') {
             steps {
-                checkout scm
+                git url: 'https://github.com/Aditya-jaiswal07972/fitness-app.git', branch: 'main'
             }
         }
 
         stage('Copy Code to Ansible Server') {
             steps {
-                sshagent (credentials: [env.ANSIBLE_KEY]) {
+                sshagent (credentials: ['ansible-ec2-key']) {
                     sh '''
-                        scp -o StrictHostKeyChecking=no -r * $ANSIBLE_HOST:~/fitness-app/
+                    scp -o StrictHostKeyChecking=no -r \
+                    Dockerfile.backend Dockerfile.frontend Jenkinsfile LICENSE README.md \
+                    ansible backend deploy.yml frontend jest.config.cjs k8s \
+                    ubuntu@54.196.240.72:~/fitness-app/
                     '''
                 }
             }
@@ -26,20 +27,16 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                sshagent (credentials: [env.ANSIBLE_KEY]) {
-                    sh """
-                        ssh -o StrictHostKeyChecking=no $ANSIBLE_HOST '
-                            cd ~/fitness-app &&
-                            ansible-playbook deploy.yml --extra-vars "dockerhub_username=${DOCKER_HUB_USERNAME}" --extra-vars "dockerhub_password=${DOCKER_HUB_PASSWORD}"
-                        '
-                    """
+                sshagent (credentials: ['ansible-ec2-key']) {
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ubuntu@54.196.240.72 '
+                        cd fitness-app &&
+                        echo "$DOCKER_HUB_CREDENTIALS_PSW" | docker login -u "$DOCKER_HUB_CREDENTIALS_USR" --password-stdin &&
+                        ansible-playbook deploy.yml
+                    '
+                    '''
                 }
             }
         }
-    }
-
-    environment {
-        DOCKER_HUB_USERNAME = credentials('docker-hub-credentials').usr
-        DOCKER_HUB_PASSWORD = credentials('docker-hub-credentials').psw
     }
 }
