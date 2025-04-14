@@ -14,11 +14,11 @@ pipeline {
 
         stage('Copy Code to Ansible Server') {
             steps {
-                sshagent (credentials: ['ansible-ec2-key']) {
+                sshagent (credentials: ['ansible-key']) {
                     sh '''
                     scp -o StrictHostKeyChecking=no -r \
                     Dockerfile.backend Dockerfile.frontend Jenkinsfile LICENSE README.md \
-                    ansible backend deploy.yml frontend jest.config.cjs k8s \
+                    ansible backend deploy.yml frontend  k8s \
                     ubuntu@54.196.240.72:~/fitness-app/
                     '''
                 }
