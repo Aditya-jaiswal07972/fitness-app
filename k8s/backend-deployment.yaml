@@ -17,6 +17,13 @@ spec:
           image: aditya14rudra/fitness-backend:latest
           ports:
             - containerPort: 5000
+          resources:
+            requests:
+              memory: "128Mi"
+              ephemeral-storage: "200Mi"
+            limits:
+              memory: "256Mi"
+              ephemeral-storage: "400Mi"
 ---
 apiVersion: v1
 kind: Service
