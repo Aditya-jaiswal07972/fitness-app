@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: backend-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -13,7 +13,20 @@ spec:
         app: backend
     spec:
       containers:
-      - name: backend
-        image: aditya14rudra/fitness-app-backend:latest
-        ports:
-        - containerPort: 3001
+        - name: backend
+          image: aditya14rudra/fitness-backend:latest
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP
