@@ -27,7 +27,7 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                sshagent (credentials: ['ansible-ec2-key']) {
+                sshagent (credentials: ['ansible-key']) {
                     sh '''
                     ssh -o StrictHostKeyChecking=no ubuntu@54.196.240.72 '
                         cd fitness-app &&
