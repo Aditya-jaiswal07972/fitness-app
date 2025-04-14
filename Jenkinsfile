@@ -18,7 +18,7 @@ pipeline {
                     sh '''
                     scp -o StrictHostKeyChecking=no -r \
                     Dockerfile.backend Dockerfile.frontend Jenkinsfile LICENSE README.md \
-                    ansible backend deploy.yml frontend  k8s \
+                    backend deploy.yml frontend  k8s \
                     ubuntu@54.196.240.72:~/fitness-app/
                     '''
                 }
